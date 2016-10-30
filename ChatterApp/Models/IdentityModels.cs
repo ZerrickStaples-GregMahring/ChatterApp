@@ -12,6 +12,8 @@ namespace ChatterApp.Models
     public class ApplicationUser : IdentityUser
     {
         public int ApplicationUserID { get; set; }
+        public string HomeTown { get; set; }
+        public System.DateTime? BirthDate { get; set; }
 
         public virtual ICollection<ApplicationUser> Followers { get; set; }
         public virtual ICollection<ApplicationUser> Following { get; set; }

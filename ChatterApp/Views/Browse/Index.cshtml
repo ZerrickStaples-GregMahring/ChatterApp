@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ChatterApp.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            @Html.DisplayFor(modelItem => item.UserName)
+            <span>@Html.ActionLink("Follow", "Follow", new { username = item.UserName })</span>
+        </li>
+    }
+</ul>

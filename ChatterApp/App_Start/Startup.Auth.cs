@@ -54,15 +54,15 @@ namespace ChatterApp
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "1213326735395645",
+               appSecret: "cf3dfcfbad4c8bba05c3f9da1cc61452");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "311399754637-l2tj9jdaqmf9hgjubiu30bk026ba21sh.apps.googleusercontent.com",
+                ClientSecret = "IzgEJnOG4UGwsbz59sNm5PLM"
+            });
         }
     }
 }

@@ -9,7 +9,25 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+
+@foreach (var item in Model)
+{
+    <div class="message">
+        @if (item.ApplicationUser == ViewBag.CurrentUser)
+        {
+            <i>@Html.DisplayFor(modelItem => item.ApplicationUser.UserName)</i>
+            <span>@Html.DisplayFor(modelItem => item.Message)</span>
+            <i>@Html.DisplayFor(modelItem => item.DatePosted)</i>
+            <span>@Html.ActionLink("Delete", "Delete", new { id = item.ID })</span>
+        }
+    </div>
+}
+
+<button>@Html.ActionLink("Browse All Members", "Index", "Browse", new { area = "Browse" }, null)</button>
+
+
+
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Message)
@@ -40,6 +58,8 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
+
 }
 
-</table>
+</table>*@
+

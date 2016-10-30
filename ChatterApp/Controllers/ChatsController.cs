@@ -12,6 +12,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ChatterApp.Controllers
 {
+    [Authorize]
+    [RequireHttps]
     public class ChatsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -45,29 +47,18 @@ namespace ChatterApp.Controllers
                            select m;
 
             return View(db.Chats.ToList());
+
+            // sort the users alphabetically
+            var users = from u in db.Users
+                        orderby u.UserName
+                        select u;
+            return View(users.ToList());
         }
 
-        //public ActionResult Index()
-        //{
-        //    if (Request.IsAuthenticated)
-        //    {
-        //        //UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
-        //        //ApplicationUser currentUser = UserManager.FindById(User.Identity.GetUserId());
-        //        var currentUser = User.Identity.GetUserId();
-        //        //// assuming there is some kind of relationship between products and users
-        //        //List<Chat> chats = db.Chats.Where(p => p.ApplicationUser.Equals(currentUser.ApplicationUser)).ToList(); // or .email or other field from your users table
-
-        //        //var userChats = db.Chats.Where(p => p.ApplicationUserID == currentUser).Tolist();
-        //        // OPTIONAL: Make sure they see something
-        //        //if (chats.Count == 0) // They have no related products so just send all of them
-        //        //    chats = db.Chats.ToList();
-
-        //        // only send the products related to that user
-        //        return View();
-        //    }
-        //    // User is not authenticated, send them all products
-        //    return View(db.Chats.ToList());
-        //}
+        public ActionResult Browse()
+        {
+            return View("Browse/Index");
+        }
 
         // GET: Chats/Details/5
         public ActionResult Details(int? id)
