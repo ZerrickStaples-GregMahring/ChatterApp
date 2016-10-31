@@ -23,3 +23,33 @@ textarea {
     max-width: 280px;
 }
 
+.navbar .navbar-collapse{
+    background-color:#05d5bc;
+
+}
+
+.nav .navbar-nav li{
+    color:#43286b;
+} 
+
+.container{
+   padding:0;
+   margin:0;
+   width:100%;
+}
+
+#logoutForm .nav .navbar-nav .navbar-right ul{
+    margin-right:30px;
+}
+
+@media (min-width: 768px){
+    .navbar-right{
+        margin-right:30px;
+    }
+}
+ 
+
+.jumbotron{
+    text-align:center;
+    font-family:Tahoma;
+}
