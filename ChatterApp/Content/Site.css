@@ -28,14 +28,14 @@ textarea {
 
 }
 
-.nav .navbar-nav li{
-    color:#43286b;
-} 
-
 .container{
    padding:0;
    margin:0;
    width:100%;
+}
+
+.container a{
+    color:#43286b;
 }
 
 #logoutForm .nav .navbar-nav .navbar-right ul{
@@ -52,4 +52,8 @@ textarea {
 .jumbotron{
     text-align:center;
     font-family:Tahoma;
+}
+
+.btn-primary, .btn-primary:hover{
+    background-color:#05d5bc;
 }

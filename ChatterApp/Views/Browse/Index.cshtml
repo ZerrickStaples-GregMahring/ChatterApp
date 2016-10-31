@@ -18,7 +18,7 @@
     {
         <li>
             @Html.DisplayFor(modelItem => item.UserName)
-            <button class="btn btn-primary btn-default">@Html.ActionLink("Follow", "Follow", new { username = item.UserName })</button>
+            <button id="followbutton" class="btn btn-primary btn-default">@Html.ActionLink("Follow", "Follow", new { username = item.UserName })</button>
         </li>
     }
 </ul>

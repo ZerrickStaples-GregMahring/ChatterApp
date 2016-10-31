@@ -112,7 +112,7 @@ fieldset[disabled] .btn-default.active {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff265a88', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   background-repeat: repeat-x;
-  border-color: #245580;
+  border-color: white;
 }
 .btn-primary:hover,
 .btn-primary:focus {
