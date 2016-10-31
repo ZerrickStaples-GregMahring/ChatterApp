@@ -29,10 +29,10 @@ namespace ChatterApp.Models
             return userIdentity;
         }
 
-        internal bool Equals(object applicationUserID)
-        {
-            throw new NotImplementedException();
-        }
+        //internal bool Equals(object applicationUserID)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

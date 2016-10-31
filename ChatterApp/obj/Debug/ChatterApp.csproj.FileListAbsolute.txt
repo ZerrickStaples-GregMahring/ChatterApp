@@ -103,3 +103,7 @@ c:\users\wecancodeit\documents\visual studio 2015\Projects\ChatterApp\ChatterApp
 c:\users\wecancodeit\documents\visual studio 2015\Projects\ChatterApp\ChatterApp\obj\Debug\ChatterApp.Migrations.FixedPropertyName.resources
 c:\users\wecancodeit\documents\visual studio 2015\Projects\ChatterApp\ChatterApp\obj\Debug\ChatterApp.Migrations.TryingToFixApplicatinUser.resources
 C:\Users\WeCanCodeIT\Documents\Visual Studio 2015\Projects\ChatterApp\ChatterApp\obj\Debug\ChatterApp.Migrations.Init.resources
+C:\Users\WeCanCodeIT\Documents\Visual Studio 2015\Projects\ChatterApp\ChatterApp\bin\PagedList.dll
+C:\Users\WeCanCodeIT\Documents\Visual Studio 2015\Projects\ChatterApp\ChatterApp\bin\PagedList.Mvc.dll
+C:\Users\WeCanCodeIT\Documents\Visual Studio 2015\Projects\ChatterApp\ChatterApp\bin\PagedList.xml
+C:\Users\WeCanCodeIT\Documents\Visual Studio 2015\Projects\ChatterApp\ChatterApp\bin\PagedList.Mvc.xml

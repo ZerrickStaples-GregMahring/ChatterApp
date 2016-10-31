@@ -1,4 +1,13 @@
 ﻿@model IEnumerable<ChatterApp.Models.ApplicationUser>
+@*@model PagedList.IPagedList<ChatterApp.Models.ApplicationUser>
+@using PagedList.Mvc;
+@using PagedList;*@
+
+
+
+
+
+
 @{
     ViewBag.Title = "Index";
 }
@@ -9,7 +18,13 @@
     {
         <li>
             @Html.DisplayFor(modelItem => item.UserName)
-            <span>@Html.ActionLink("Follow", "Follow", new { username = item.UserName })</span>
+            <button class="btn btn-primary btn-default">@Html.ActionLink("Follow", "Follow", new { username = item.UserName })</button>
         </li>
     }
 </ul>
+
+@*<div class="row-fluid" id="pager">*@
+    <!-- output a paging control that lets the user navigation to the previous page, next page, etc -->
+    @*@Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }))
+</div>*@
+

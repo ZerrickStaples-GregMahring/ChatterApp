@@ -1,4 +1,10 @@
 ﻿@model IEnumerable<ChatterApp.Models.Chat>
+@*@model PagedList.IPagedList<ChatterApp.Models.Chat>*@
+@*@using PagedList.Mvc;
+@using PagedList;*@
+
+
+
 
 @{
     ViewBag.Title = "Index";
@@ -10,18 +16,51 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@foreach (var item in Model)
-{
-    <div class="message">
-        @if (item.ApplicationUser == ViewBag.CurrentUser)
+
+<div class="row">
+    @foreach (var item in Model)
+    { 
+                if (item.ApplicationUser == ViewBag.CurrentUser)
+                {
+                    <div class="col-xs-12 col-md-8 col-md-offset-2 chat">
+                        <span class="userName">@item.ApplicationUser.UserName</span>
+                        <span class="datePosted">@item.DatePosted</span><br />
+                        @*<i>@Html.DisplayFor(modelItem => item.ApplicationUser.UserName)</i>*@
+                        <span id="message">@Html.DisplayFor(modelItem => item.Message)</span>
+                        @*<i>@Html.DisplayFor(modelItem => item.DatePosted)</i>*@
+                        <span>@Html.ActionLink("Delete", "Delete", new { id = item.ID })</span>
+                    </div>
+                }
+    }
+            </div>
+
+<div class="row">
+    @foreach (var item in ViewBag.chats)
+    {
+        if (item != null)
         {
-            <i>@Html.DisplayFor(modelItem => item.ApplicationUser.UserName)</i>
-            <span>@Html.DisplayFor(modelItem => item.Message)</span>
-            <i>@Html.DisplayFor(modelItem => item.DatePosted)</i>
-            <span>@Html.ActionLink("Delete", "Delete", new { id = item.ID })</span>
+            <div class="col-xs-12 col-md-8 col-md-offset-2 chat">
+                <span class="userName">@item.ApplicationUser.UserName</span>
+                <span class="datePosted">@item.DatePosted</span><br />
+
+               <span id="message">@item.Message</span>
+            </div>
         }
-    </div>
-}
+        else
+        {
+            <p>"You do not have any Chats."</p>;
+        }
+    }
+
+</div>
+
+@*<div class="row-fluid" id="pager">*@
+    <!-- output a paging control that lets the user navigation to the previous page, next page, etc -->
+    @*@Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }))
+</div>*@
+
+
+
 
 <button>@Html.ActionLink("Browse All Members", "Index", "Browse", new { area = "Browse" }, null)</button>
 

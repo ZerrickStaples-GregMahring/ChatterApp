@@ -9,9 +9,11 @@ using System.Web.Mvc;
 using ChatterApp.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using PagedList;
 
 namespace ChatterApp.Controllers
 {
+    [Authorize]
     public class BrowseController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -35,6 +37,17 @@ namespace ChatterApp.Controllers
                         select u;
             return View(users.ToList());
         }
+
+        //public ActionResult Index(int? page)
+        //{
+        //    var members = db.Chats.Include(r => r.ApplicationUser.UserName);
+        //    var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
+        //    var onePageOfProducts = db.Chats.OrderBy(i => i.ID).ToPagedList(pageNumber, 25); // will only contain 10 reviews max because of the pageSize
+
+        //    ViewBag.OnePageOfProducts = onePageOfProducts;
+        //    return View();
+        //}
+
 
         public ActionResult Follow(string username)
         {

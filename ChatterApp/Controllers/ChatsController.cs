@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using ChatterApp.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using PagedList;
 
 namespace ChatterApp.Controllers
 {
@@ -31,7 +32,7 @@ namespace ChatterApp.Controllers
             }
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             ViewBag.CurrentUser = CurrentUser;
 
@@ -46,14 +47,39 @@ namespace ChatterApp.Controllers
                            orderby m.DatePosted descending
                            select m;
 
+            //return View(db.Chats.ToList());
+
+            UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            ApplicationUser currentUser = UserManager.FindById(User.Identity.GetUserId());
+            List<string> following = new List<string>();
+            foreach (ApplicationUser followed in currentUser.Following)
+            {
+                following.Add(followed.Id);
+            }
+            IEnumerable<Chat> chatEnumerable = db.Chats.Where(c => following.Contains(c.ApplicationUser.Id)).Select(c => c).OrderByDescending(c => c.ID).AsEnumerable();
+            List<Chat> chats = chatEnumerable.ToList();
+            ViewBag.chats = chats;
             return View(db.Chats.ToList());
 
-            // sort the users alphabetically
-            var users = from u in db.Users
-                        orderby u.UserName
-                        select u;
-            return View(users.ToList());
+            //var posts = db.Chats.Include(r => r.Message).Include(r => r.DatePosted).Include(r => r.ApplicationUser.UserName);
+            //var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
+            //var onePageOfProducts = db.Chats.OrderBy(i => i.ID).ToPagedList(pageNumber, 25); // will only contain 10 reviews max because of the pageSize
+
+            //ViewBag.OnePageOfProducts = onePageOfProducts;
+            //return View();
+
         }
+
+        //public ActionResult Index(int? page)
+        //{
+        //    var posts = db.Chats.Include(r => r.Message).Include(r => r.DatePosted).Include(r => r.ApplicationUser.UserName);
+        //    var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
+        //    var onePageOfProducts = db.Chats.OrderBy(i => i.ID).ToPagedList(pageNumber, 25); // will only contain 10 reviews max because of the pageSize
+
+        //    ViewBag.OnePageOfProducts = onePageOfProducts;
+        //    return View();
+        //}
+
 
         public ActionResult Browse()
         {
